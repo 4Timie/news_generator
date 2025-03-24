@@ -15,10 +15,10 @@ const swaggerOptions = {
       description: "A basic news summary application" 
     },
     servers: [
-      {url: "http://localhost:3000"}
+      {url: "http://localhost:3000/api/news"}
     ]
   },
-  apis: [".src/newRoutes.js"]
+  apis: ["./src/routes/newRoutes.js"]
 }
 
 const specs = swaggerDoc(swaggerOptions);
@@ -33,6 +33,7 @@ app.use('/api/news', newsRoutes);
 // Error handling
 app.use(errorHandler);
 
+// Documentation
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 const PORT = process.env.PORT || 3000;
